@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: dsheeler@pobox.com\n"
-"POT-Creation-Date: 2024-09-25 17:58-0500\n"
-"PO-Revision-Date: 2024-11-13 12:00+0000\n"
-"Last-Translator: Степан Наумов <st250492@yandex.ru>\n"
+"POT-Creation-Date: 2025-02-05 20:07-0600\n"
+"PO-Revision-Date: 2025-02-07 12:01+0000\n"
+"Last-Translator: Иван Морозов <treplikon@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/"
 "coverflow-alt-tab/source/ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: src/prefs.js:105
 msgid "Reset to default value"
@@ -34,13 +34,12 @@ msgid "General"
 msgstr "Основные"
 
 #: src/prefs.js:132
-#, fuzzy
 msgid "Switcher Properties"
-msgstr "Стиль перелистывания окон"
+msgstr "Свойства переключателя"
 
 #: src/prefs.js:137
 msgid "Flip Stack"
-msgstr ""
+msgstr "Туда и обратно"
 
 #: src/prefs.js:143
 msgid "Carousel"
@@ -48,37 +47,35 @@ msgstr "Карусель"
 
 #: src/prefs.js:149
 msgid "Looping Method"
-msgstr "Способ Зацикливания"
+msgstr "Способ зацикливания"
 
 #: src/prefs.js:149
 msgid "How to cycle through windows."
-msgstr "Как переключаться через окна."
+msgstr "Как переключаться между окнами."
 
 #: src/prefs.js:153
 msgid "Coverflow"
 msgstr "Coverflow"
 
 #: src/prefs.js:159
-#, fuzzy
 msgid "Timeline"
-msgstr "Timeline"
+msgstr "Временная шкала"
 
 #: src/prefs.js:164
 msgid "Style"
-msgstr ""
+msgstr "Стиль"
 
 #: src/prefs.js:164
 msgid "Pick the type of switcher."
-msgstr ""
+msgstr "Выберите тип переключателя."
 
 #: src/prefs.js:165
 msgid "Vertical Offset"
-msgstr ""
+msgstr "Вертикальное смещение"
 
 #: src/prefs.js:165
-#, fuzzy
 msgid "Positive value moves everything down, negative up."
-msgstr "Вертикальное смещение (положительное вверх, отрицательное вниз)"
+msgstr "Вертикальное смещение (положительное вверх, отрицательное вниз)."
 
 #: src/prefs.js:169
 msgid "Bottom"
@@ -86,144 +83,141 @@ msgstr "Снизу"
 
 #: src/prefs.js:175
 msgid "Top"
-msgstr "Сверху"
+msgstr "Вверху"
 
 #: src/prefs.js:180
-#, fuzzy
 msgid "Window Title Position"
 msgstr "Позиция заголовка окна"
 
 #: src/prefs.js:180
 msgid "Place window title above or below the switcher."
-msgstr ""
+msgstr "Заголовок окна над или под переключателем."
 
 #: src/prefs.js:181
 msgid "Enforce Primary Monitor"
-msgstr ""
+msgstr "Использовать основной монитор"
 
 #: src/prefs.js:181
-#, fuzzy
 msgid ""
 "Always show on the primary monitor, otherwise, show on the active monitor."
-msgstr "Всегда листать окна на основном мониторе"
+msgstr ""
+"Всегда отображать окна на основном мониторе, иначе показывать на активном "
+"мониторе."
 
 #: src/prefs.js:184
 msgid "Hide Panel"
-msgstr ""
+msgstr "Скрыть панель"
 
 #: src/prefs.js:184
 msgid "Hide panel when switching windows."
-msgstr ""
+msgstr "Скрыть панель при переключении окон."
 
 #: src/prefs.js:185
 msgid "Invert Swipes"
-msgstr ""
+msgstr "Инвертировать свайпы"
 
 #: src/prefs.js:185
 msgid "Invert system scroll direction setting."
-msgstr ""
+msgstr "Инвертировать системные настройки направления прокрутки."
 
 #: src/prefs.js:189
 msgid "Background"
-msgstr ""
+msgstr "Справочная информация"
 
 #: src/prefs.js:191
-#, fuzzy
 msgid "Dim-factor"
-msgstr "Затемнение фона (меньше значит темнее)"
+msgstr "Затемнение фона"
 
 #: src/prefs.js:191
 msgid "Bigger means darker."
-msgstr ""
+msgstr "Больше значит темнее."
 
 #: src/prefs.js:195
 msgid "Animation"
-msgstr ""
+msgstr "Анимации"
 
-#: src/prefs.js:200 src/prefs.js:226 src/prefs.js:286 src/prefs.js:298
+#: src/prefs.js:200 src/prefs.js:226 src/prefs.js:286 src/prefs.js:299
 msgid "Properties"
-msgstr ""
+msgstr "Свойства"
 
 #: src/prefs.js:203
-#, fuzzy
 msgid "Easing Function"
-msgstr "Эластичная анимация"
+msgstr "Тип анимации"
 
 #: src/prefs.js:203
 msgid "Determine how windows move."
-msgstr ""
+msgstr "Определите, как движутся окна."
 
 #: src/prefs.js:204
 msgid "Duration [s]"
-msgstr ""
+msgstr "Продолжительность [с]"
 
 #: src/prefs.js:205
 msgid "Randomize Durations"
-msgstr ""
+msgstr "Случайная продолжительность"
 
 #: src/prefs.js:205
 msgid ""
 "Each animation duration assigned randomly between 0 and configured duration."
 msgstr ""
+"Для каждой анимации время показа определяется случайно"
+"в диапазоне от 0 до установленного значения."
 
 #: src/prefs.js:208
 msgid "Included"
-msgstr ""
+msgstr "Задействовано"
 
 #: src/prefs.js:211
 msgid "Current workspace only"
-msgstr "Только текущее рабочее место"
+msgstr "Только текущее рабочее пространсво"
 
 #: src/prefs.js:213
 msgid "All workspaces"
-msgstr "Все рабочие места"
+msgstr "Все рабочие пространства"
 
 #: src/prefs.js:215
 msgid "All workspaces, current first"
-msgstr "Все рабочие места, текущее первым"
+msgstr "Все рабочие пространства, текущее первым"
 
 #: src/prefs.js:217
-#, fuzzy
 msgid "Workspaces"
-msgstr "Все рабочие места"
+msgstr "Рабочие пространства"
 
 #: src/prefs.js:217
-#, fuzzy
 msgid "Switch between windows on current or on all workspaces."
-msgstr "Показывать окна всех рабочих мест"
+msgstr "Переход между окнами в текущем или во всех рабочих пространствах."
 
 #: src/prefs.js:218
 msgid "Current Monitor"
-msgstr ""
+msgstr "Текущий монитор"
 
 #: src/prefs.js:218
-#, fuzzy
 msgid "Switch between windows on current monitor."
-msgstr "Показывать окна всех рабочих мест"
+msgstr "Переключение между окнами на текущем мониторе."
 
 #: src/prefs.js:221
 msgid "Icons"
-msgstr ""
+msgstr "Иконки"
 
 #: src/prefs.js:230
 msgid "Overlay Icon Size"
-msgstr ""
+msgstr "Размер наложенного значка"
 
 #: src/prefs.js:230
 msgid "Set the overlay icon size in pixels."
-msgstr ""
+msgstr "Установите размер накладываемого значка в пикселях."
 
 #: src/prefs.js:231
 msgid "Overlay Icon Opacity"
-msgstr ""
+msgstr "Прозрачность наложенного значка"
 
 #: src/prefs.js:231
 msgid "Set the overlay icon opacity."
-msgstr ""
+msgstr "Установите прозрачность наложенного значка."
 
 #: src/prefs.js:235
 msgid "Classic"
-msgstr "Классическое"
+msgstr "Классический"
 
 #: src/prefs.js:241
 msgid "Overlay"
@@ -231,232 +225,256 @@ msgstr "Поверх окна"
 
 #: src/prefs.js:247
 msgid "Attached"
-msgstr ""
+msgstr "Прикрепленный"
 
 #: src/prefs.js:252
-#, fuzzy
 msgid "Application Icon Style"
-msgstr "Расположение иконки приложения"
+msgstr "Стиль значка приложения"
 
 #: src/prefs.js:257
 msgid "Fade Only"
-msgstr ""
+msgstr "Только выцветание"
 
 #: src/prefs.js:263
 msgid "Scale Only"
-msgstr ""
+msgstr "Только масштабирование"
 
 #: src/prefs.js:269
 msgid "Fade and Scale"
-msgstr ""
+msgstr "Выцветание и масштабирование"
 
 #: src/prefs.js:274
 msgid "Add / Remove Effects"
-msgstr ""
+msgstr "Добавить / Удалить эффекты"
 
 #: src/prefs.js:274
 msgid "How Icons and Labels ease in and out."
-msgstr ""
+msgstr "Как показывать и скрывать значки и надписи приложений."
 
 #: src/prefs.js:278
 msgid "Icon Shadow"
-msgstr ""
+msgstr "Тень значка"
 
 #: src/prefs.js:282
-#, fuzzy
 msgid "Windows"
-msgstr "Стиль перелистывания окон"
+msgstr "Окна"
 
 #: src/prefs.js:290
 msgid "Window Preview Size to Monitor Size Ratio"
-msgstr ""
+msgstr "Соотношение размера окна предварительного просмотра и размера монитора"
 
 #: src/prefs.js:290
 msgid "Maximum ratio of window preview size to monitor size."
 msgstr ""
+"Максимальное соотношение размера окна предварительного просмотра к размеру "
+"монитора."
 
 #: src/prefs.js:291
 msgid "Off-center Size Factor"
-msgstr ""
+msgstr "Смещенный от центра коэффициент размера"
 
 #: src/prefs.js:291
 msgid "Factor by which to successively shrink previews off to the side."
 msgstr ""
+"Фактор, с помощью которого можно последовательно сдвигать предварительные "
+"просмотры в сторону."
 
-#: src/prefs.js:294
-#, fuzzy
+#: src/prefs.js:292
+msgid "Coverflow Window Angle"
+msgstr "Угол наклона окна в режиме Coverflow"
+
+#: src/prefs.js:292
+msgid "Angle of off-center windows in coverflow mode."
+msgstr "Угол смещения окон от центра в режиме coverflow."
+
+#: src/prefs.js:293
+msgid "Coverflow Window Offset Width"
+msgstr "Ширина смещения окна Coverflow"
+
+#: src/prefs.js:293
+msgid "How far windows are off to the side in coverflow mode."
+msgstr "Как далеко расположены окна в сторону в режиме coverflow."
+
+#: src/prefs.js:295
 msgid "AppSwitcher"
-msgstr "Стиль перелистывания окон"
+msgstr "Переключатель приложений"
 
-#: src/prefs.js:301
+#: src/prefs.js:302
 msgid "Make the Application Switcher Show Only First Preview"
-msgstr ""
+msgstr "Отображать только одно окно приложения для предварительного просмотра"
 
-#: src/prefs.js:301
+#: src/prefs.js:302
 msgid "Don't group windows of the same application in a subswitcher."
 msgstr ""
+"Не группировать окна одного и того же приложения в отдельном переключателе."
 
-#: src/prefs.js:302
+#: src/prefs.js:303
 msgid "Desaturate"
-msgstr ""
+msgstr "Обесцветить"
 
-#: src/prefs.js:302
+#: src/prefs.js:303
 msgid "Larger means more desaturation."
-msgstr ""
+msgstr "Чем больше, тем больше обесцвечивание."
 
-#: src/prefs.js:305
+#: src/prefs.js:306
 msgid "Tint"
-msgstr ""
+msgstr "Оттенок"
 
-#: src/prefs.js:317 src/prefs.js:427
+#: src/prefs.js:318 src/prefs.js:448
 msgid "Color"
-msgstr ""
+msgstr "Цвет"
 
-#: src/prefs.js:338 src/prefs.js:448
+#: src/prefs.js:339 src/prefs.js:472
 msgid "Set to Theme Color"
-msgstr ""
+msgstr "Установить цвет темы"
 
-#: src/prefs.js:376
+#: src/prefs.js:397
 msgid "Blend"
-msgstr ""
+msgstr "Смешивание"
 
-#: src/prefs.js:376
+#: src/prefs.js:397
 msgid "How much to blend the tint color; bigger means more tint color."
 msgstr ""
+"Сколько нужно растушевать оттеночного цвета; чем больше, тем больше оттенок."
 
-#: src/prefs.js:377
+#: src/prefs.js:398
 msgid "Glitch"
-msgstr ""
+msgstr "Глюки"
 
-#: src/prefs.js:380
+#: src/prefs.js:401
 msgid "Keybindings"
-msgstr ""
+msgstr "Сочетания клавиш"
 
-#: src/prefs.js:385
+#: src/prefs.js:406
 msgid "System Actions Keybindings"
-msgstr ""
+msgstr "Системные действия и привязки клавиш"
 
-#: src/prefs.js:386
+#: src/prefs.js:407
 msgid ""
 "In case of conflicts with other window switchers, can unbind from system "
 "actions."
 msgstr ""
+"В случае конфликтов с другими оконными переключателями, может отказаться от "
+"системных действий."
 
-#: src/prefs.js:389
+#: src/prefs.js:410
 msgid "Bind to 'switch-windows'"
-msgstr ""
+msgstr "Привязка к \"Клавише-Win\""
 
-#: src/prefs.js:390
+#: src/prefs.js:411
 msgid "Bind to 'switch-applications'"
-msgstr ""
-
-#: src/prefs.js:393
-msgid "Internal Actions Keybindings"
-msgstr ""
-
-#: src/prefs.js:394
-msgid "Internal actions that will not conflict with other window switchers."
-msgstr ""
-
-#: src/prefs.js:397
-msgid "Coverflow Switch Windows Shortcut"
-msgstr ""
-
-#: src/prefs.js:397
-#, fuzzy
-msgid "Activate window switcher."
-msgstr "Расположение иконки приложения"
-
-#: src/prefs.js:398
-msgid "Coverflow Switch Applications Shortcut"
-msgstr ""
-
-#: src/prefs.js:398
-#, fuzzy
-msgid "Activate application switcher."
-msgstr "Расположение иконки приложения"
-
-#: src/prefs.js:401
-msgid "Advanced Options"
-msgstr ""
-
-#: src/prefs.js:405
-msgid "None"
-msgstr ""
-
-#: src/prefs.js:406
-msgid "Move Camera"
-msgstr ""
-
-#: src/prefs.js:407
-msgid "Adjust Angles"
-msgstr ""
-
-#: src/prefs.js:408
-msgid "Perspective Correction"
-msgstr ""
-
-#: src/prefs.js:408
-msgid "Method to make off-center switcher look centered."
-msgstr ""
-
-#: src/prefs.js:410
-msgid "Verbose Logging"
-msgstr ""
-
-#: src/prefs.js:410
-msgid "Log debug and normal messages."
-msgstr ""
+msgstr "Привязка к \"Клавише-приложений\""
 
 #: src/prefs.js:414
-msgid "Highlight Window Under Mouse"
-msgstr ""
+msgid "Internal Actions Keybindings"
+msgstr "Внутренние действия и привязки клавиш"
 
 #: src/prefs.js:415
+msgid "Internal actions that will not conflict with other window switchers."
+msgstr ""
+"Внутренние действия, которые не будут конфликтовать с другими "
+"переключателями окон."
+
+#: src/prefs.js:418
+msgid "Coverflow Switch Windows Shortcut"
+msgstr "Coverflow клавиша Win"
+
+#: src/prefs.js:418
+msgid "Activate window switcher."
+msgstr "Активируйте переключатель окон."
+
+#: src/prefs.js:419
+msgid "Coverflow Switch Applications Shortcut"
+msgstr "Coverflow клавиша переключения приложений"
+
+#: src/prefs.js:419
+msgid "Activate application switcher."
+msgstr "Активируйте переключатель приложений."
+
+#: src/prefs.js:422
+msgid "Advanced Options"
+msgstr "Расширенные параметры"
+
+#: src/prefs.js:426
+msgid "None"
+msgstr "Нет"
+
+#: src/prefs.js:427
+msgid "Move Camera"
+msgstr "Перемещение камеры"
+
+#: src/prefs.js:428
+msgid "Adjust Angles"
+msgstr "Настройка углов"
+
+#: src/prefs.js:429
+msgid "Perspective Correction"
+msgstr "Коррекция перспективы"
+
+#: src/prefs.js:429
+msgid "Method to make off-center switcher look centered."
+msgstr ""
+"Способ заставляющий смещенный от центра переключатель выглядеть центрированным."
+
+#: src/prefs.js:431
+msgid "Verbose Logging"
+msgstr "Подробное ведение журнала"
+
+#: src/prefs.js:431
+msgid "Log debug and normal messages."
+msgstr "Регистрировать отладочные и обычные сообщения."
+
+#: src/prefs.js:435
+msgid "Highlight Window Under Mouse"
+msgstr "Выделять окно с помощью мыши"
+
+#: src/prefs.js:436
 msgid ""
 "Draw a colored highlight on window under the mouse to know the effects of "
 "clicking."
 msgstr ""
+"Рисовать цветную подсветку на окне под мышкой,"
+"чтобы увидеть эффект от нажатия."
 
-#: src/prefs.js:488
+#: src/prefs.js:526
 msgid "Raise Window Under Mouse"
-msgstr ""
+msgstr "Поднимать окно с помощью мыши"
 
-#: src/prefs.js:488
+#: src/prefs.js:526
 msgid "Raise the window under the mouse above all others."
-msgstr ""
+msgstr "Поднимать окно под мышкой выше всех остальных."
 
-#: src/prefs.js:491
+#: src/prefs.js:529
 msgid "Contribute"
-msgstr ""
+msgstr "Вклад"
 
-#: src/prefs.js:527
+#: src/prefs.js:565
 msgid "Code (create pull requests, report issues, etc.)"
-msgstr ""
+msgstr "Код (создание запросов на извлечение, сообщение о проблемах и т.д.)"
 
-#: src/prefs.js:535
+#: src/prefs.js:573
 msgid "Donate"
-msgstr ""
+msgstr "Пожертвования"
 
-#: src/prefs.js:556
+#: src/prefs.js:594
 msgid "Translate"
-msgstr ""
+msgstr "Перевод"
 
 #: src/shortcutButton.js:37
 msgid "Choose..."
-msgstr ""
+msgstr "Выберите..."
 
 #: src/shortcutButton.js:46
 msgid "Change keyboard shortcut"
-msgstr ""
+msgstr "Изменить сочетание клавиш"
 
 #: src/shortcutButton.js:50
 msgid "Clear"
-msgstr ""
+msgstr "Очистить"
 
 #: src/shortcutButton.js:90
 msgid "Press your keyboard shortcut..."
-msgstr ""
+msgstr "Нажмите сочетание клавиш..."
 
 #~ msgid ""
 #~ "<b>Please restart Gnome-Shell to apply changes! (Hit Alt+F2, type 'r' and "
