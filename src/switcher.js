@@ -797,6 +797,7 @@ export class Switcher {
             let icon_box_high = this._windowIconBoxes[idx_high];
 
             let scale = this._settings.icon_style === "Classic" ? 1 : app_icon_size;
+            ;
             let alpha = 1;
             if (this._settings.icon_style === "Attached") {
                 scale = 0;
