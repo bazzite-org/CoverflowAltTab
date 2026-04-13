@@ -57,6 +57,7 @@ export class Switcher {
         this._windows = [...windows];
         this._modifierMask = null;
         this._currentIndex = currentIndex;
+        this._lastIndex = currentIndex;
         this._haveModal = false;
         this._tracker = manager.platform.getWindowTracker();
         this._windowManager = global.window_manager;
@@ -251,7 +252,8 @@ export class Switcher {
 
     _gestureBegin(tracker) {
         const baseDistance = 400;
-        const progress = this._currentIndex;
+        let t = this._previews[this._currentIndex].get_transition('scale-x');
+        const progress = t !== null ? (this._currentIndex - this._lastIndex) * t.get_progress() + this._lastIndex : this._currentIndex;//this._currentIndex;
         const points = [];
         for (let i = 0; i < this._previews.length; i++) {
             points.push(i);
@@ -338,6 +340,9 @@ export class Switcher {
                     preview.add_effect_with_name('glitch-effect', glitchEffect);
                 }
                 preview.get_effect('glitch-effect').set_enabled(true);
+                if (preview._effectCounts['glitch'] === undefined) {
+                    preview._effectCounts['glitch'] = 0;
+                }
                 preview._effectCounts['glitch'] += 1;
             }
             if (this._settings.use_tint) {
@@ -457,8 +462,9 @@ export class Switcher {
     // eslint-disable-next-line complexity
     _updateSubSwitcher() {
         if (this._isAppSwitcher && !this._settings.switch_application_behaves_like_switch_windows) {
-            let scale = 1, x = 0;
-            let progress = 1;
+            let scale
+            let x;
+            let progress;
             let to_index = this._toIndex;
             let from_index = this._fromIndex;
             progress = (this._currentIndex - from_index) / (to_index - from_index);
@@ -519,6 +525,7 @@ export class Switcher {
     }
 
     _setCurrentIndex(value) {
+        this._lastIndex = this._currentIndex;
         this._currentIndex = value;
     }
 
@@ -571,7 +578,6 @@ export class Switcher {
             Main.uiGroup.add_child(parent);
             this._backgroundColor = actor.get_theme_node().get_background_color();
             Main.uiGroup.remove_child(parent);
-            parent = null;
             let color = new GLib.Variant("(ddd)", [this._backgroundColor.red/255, this._backgroundColor.green/255, this._backgroundColor.blue/255]);
             this._manager.platform._extensionSettings.set_value("switcher-background-color", color);
         }
