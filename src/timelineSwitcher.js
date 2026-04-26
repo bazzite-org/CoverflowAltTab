@@ -33,7 +33,6 @@ export class TimelineSwitcher extends Switcher {
         super(...args);
         TRANSITION_TYPE = 'userChoice';
         IN_BOUNDS_TRANSITION_TYPE = 'easeOutQuad';
-        this._firstUpdate = true;
     }
 
     _createPreviews() {
@@ -94,6 +93,9 @@ export class TimelineSwitcher extends Switcher {
             }
             this._allPreviews.push(preview);
             this.previewActor.add_child(preview);
+
+            preview.make_bottom_layer(this.previewActor);
+
         }
     }
 
@@ -137,12 +139,8 @@ export class TimelineSwitcher extends Switcher {
             return;
         }
 
-        if (this._firstUpdate) {
-            this._firstUpdate = false;
-        } else {
-            for (let i = Math.round(this._currentIndex); i < this._currentIndex + this._previews.length; i++) {
-                this._previews[i%this._previews.length].make_bottom_layer(this.previewActor);
-            }
+        for (let i = Math.round(this._currentIndex); i < this._currentIndex + this._previews.length; i++) {
+            this._previews[i%this._previews.length].make_bottom_layer(this.previewActor);
         }
         if (reorder_only) return;
         // preview windows
