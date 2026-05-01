@@ -145,6 +145,23 @@
         <summary>In Coverflow Switcher, scales the previews as they spread out to the sides in </summary>
         <description>Define the scale factor successively applied each step away from the current preview.</description>
     </key>
+    <key type="d" name="timeline-preview-distance">
+        <range min="0" max="4096"/>
+        <default>96</default>
+        <summary>In Timeline switcher, spacing distance between previews in pixels</summary>
+        <description>Hypotenuse distance in pixels used to compute timeline preview spacing.</description>
+    </key>
+    <key type="d" name="timeline-preview-angle">
+        <range min="0" max="90"/>
+        <default>29.357753542791272</default>
+        <summary>In Timeline switcher, spacing angle between previews</summary>
+        <description>Angle in degrees used with timeline preview distance to compute horizontal and vertical spacing.</description>
+    </key>
+    <key type="b" name="timeline-preview-scale-with-distance">
+        <default>true</default>
+        <summary>In Timeline switcher, scale previews by distance</summary>
+        <description>Scale timeline previews by preview scaling factor raised to the distance from the selected preview.</description>
+    </key>
     <key type="d" name="coverflow-window-angle">
         <range min="0" max="360"/>
         <default>90</default>

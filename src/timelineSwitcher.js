@@ -21,22 +21,24 @@
  */
 
 import {Switcher} from  './switcher.js';
-import {Preview, Placement, findUpperLeftFromCenter} from './preview.js'
+import {Preview, Placement} from './preview.js'
 
 let TRANSITION_TYPE;
 let IN_BOUNDS_TRANSITION_TYPE;
 const TILT_ANGLE = 15;
 const ALPHA = 1.0;
-let PREVIEW_OFFSET;
-let PREVIEW_OFFSET_X_FACTOR;
+const DEGREES_TO_RADIANS = Math.PI / 180;
+let PREVIEW_OFFSET_X;
+let PREVIEW_OFFSET_Y;
 
 export class TimelineSwitcher extends Switcher {
     constructor(...args) {
         super(...args);
         TRANSITION_TYPE = 'userChoice';
         IN_BOUNDS_TRANSITION_TYPE = 'easeOutQuad';
-        PREVIEW_OFFSET = this._settings.preview_to_monitor_ratio * this.actor.height / 6;
-        PREVIEW_OFFSET_X_FACTOR = this.actor.width / this.actor.height;
+        const angleRadians = this._settings.timeline_preview_angle * DEGREES_TO_RADIANS;
+        PREVIEW_OFFSET_X = this._settings.timeline_preview_distance * Math.cos(angleRadians);
+        PREVIEW_OFFSET_Y = this._settings.timeline_preview_distance * Math.sin(angleRadians);
     }
 
     _createPreviews() {
@@ -150,16 +152,18 @@ export class TimelineSwitcher extends Switcher {
         // preview windows
         for (let [i, preview] of this._previews.entries()) {
             animation_time = this._getRandomTime();
-            let distance = (this._currentIndex > i) ? this._previews.length - this._currentIndex + i : i - this._currentIndex;
+            const distance = (this._currentIndex > i) ? this._previews.length - this._currentIndex + i : i - this._currentIndex;
+            const offset = this._settings.timeline_preview_scale_with_distance? Math.sqrt(distance) : distance;
+
             if (distance === this._previews.length - 1 && direction > 0) {
                 preview.__looping = true;
                 animation_time = this._settings.animation_time;
                 preview.make_top_layer(this.previewActor);
                 this._raiseIcons();
-                let scale = preview.scale;// * Math.pow(this._settings.preview_scaling_factor, -1);
+                let scale = this._getScaleAtDistance(preview, -1);
                 this._manager.platform.tween(preview, {
-                    x: preview.target_x + PREVIEW_OFFSET * PREVIEW_OFFSET_X_FACTOR,
-                    y: preview.target_y + PREVIEW_OFFSET,
+                    x: preview.target_x + PREVIEW_OFFSET_X,
+                    y: preview.target_y + PREVIEW_OFFSET_Y,
                     time: animation_time / 2,
                     transition: TRANSITION_TYPE,
                     rotation_angle_y: TILT_ANGLE,
@@ -178,12 +182,12 @@ export class TimelineSwitcher extends Switcher {
             } else if (distance === 0 && direction < 0) {
                 preview.__looping = true;
                 animation_time = this._settings.animation_time;
-                let scale = preview.scale;// * Math.pow(this._settings.preview_scaling_factor, this._previews.length);
+                let scale = this._getScaleAtDistance(preview, this._previews.length);
                 preview.make_bottom_layer(this.previewActor);
                 this._manager.platform.tween(preview, {
                     time: animation_time / 2,
-                    x: preview.target_x - (this._previews.length) * PREVIEW_OFFSET * PREVIEW_OFFSET_X_FACTOR,
-                    y: preview.target_y - (this._previews.length) * PREVIEW_OFFSET,
+                    x: preview.target_x - Math.sqrt(this._previews.length) * PREVIEW_OFFSET_X,
+                    y: preview.target_y - Math.sqrt(this._previews.length) * PREVIEW_OFFSET_Y,
                     transition: TRANSITION_TYPE,
                     rotation_angle_y: TILT_ANGLE,
                     onCompleteParams: [preview, distance, animation_time],
@@ -198,10 +202,10 @@ export class TimelineSwitcher extends Switcher {
                     opacity: 0,
                 });
             } else {
-                let scale = preview.scale;// * Math.pow(this._settings.preview_scaling_factor, distance);//Math.max(preview.scale * ((20 - 2 * distance) / 20), 0);
+                let scale = this._getScaleAtDistance(preview, distance);//Math.max(preview.scale * ((20 - 2 * distance) / 20), 0);
                 let tweenparams = {
-                    x: preview.target_x - distance * PREVIEW_OFFSET * PREVIEW_OFFSET_X_FACTOR,
-                    y: preview.target_y - distance * PREVIEW_OFFSET,
+                    x: preview.target_x - offset * PREVIEW_OFFSET_X,
+                    y: preview.target_y - offset * PREVIEW_OFFSET_Y,
                     scale_x: scale,
                     scale_y: scale,
                     scale_z: scale,
@@ -229,9 +233,9 @@ export class TimelineSwitcher extends Switcher {
         preview.__looping = false;
         preview.make_top_layer(this.previewActor);
         this._raiseIcons();
-        preview.x = preview.target_x + PREVIEW_OFFSET * PREVIEW_OFFSET_X_FACTOR;
-        preview.y =  preview.target_y + PREVIEW_OFFSET;
-        let scale_start = preview.scale;// * Math.pow(this._settings.preview_scaling_factor, -1);
+        preview.x = preview.target_x + PREVIEW_OFFSET_X;
+        preview.y =  preview.target_y + PREVIEW_OFFSET_Y;
+        let scale_start = this._getScaleAtDistance(preview, -1);
         preview.scale_x = scale_start;
         preview.scale_y = scale_start;
         preview.scale_z = scale_start;
@@ -259,22 +263,22 @@ export class TimelineSwitcher extends Switcher {
         preview.__looping = false;
         preview.make_bottom_layer(this.previewActor);
 
-        preview.x = preview.target_x - (distance + 1) * PREVIEW_OFFSET * PREVIEW_OFFSET_X_FACTOR;
-        preview.y = preview.target_y - (distance + 1) * PREVIEW_OFFSET;
-        let scale_start = preview.scale;// * Math.pow(this._settings.preview_scaling_factor, distance + 1);
+        preview.x = preview.target_x - Math.sqrt(distance + 1) * PREVIEW_OFFSET_X;
+        preview.y = preview.target_y - Math.sqrt(distance + 1) * PREVIEW_OFFSET_Y;
+        let scale_start = this._getScaleAtDistance(preview, distance + 1);
         preview.scale_x = scale_start;
         preview.scale_y = scale_start;
         preview.scale_z = scale_start;
         this._manager.platform.tween(preview, {
-            x: preview.target_x - distance * PREVIEW_OFFSET * PREVIEW_OFFSET_X_FACTOR,
-            y: preview.target_y - (distance) * PREVIEW_OFFSET,
+            x: preview.target_x - Math.sqrt(distance) * PREVIEW_OFFSET_X,
+            y: preview.target_y - Math.sqrt(distance) * PREVIEW_OFFSET_Y,
             time: animation_time / 2,
             transition: TRANSITION_TYPE,
             onCompleteParams: [preview],
             onComplete: this._onFinishMove,
             onCompleteScope: this,
         });
-        let scale_end = preview.scale;// * Math.pow(this._settings.preview_scaling_factor, distance);
+        let scale_end = this._getScaleAtDistance(preview, distance);
         this._manager.platform.tween(preview, {
             opacity: ALPHA * 255,
             scale_x: scale_end,
@@ -294,5 +298,12 @@ export class TimelineSwitcher extends Switcher {
             }
             preview.__finalTween = null;
         }
+    }
+
+    _getScaleAtDistance(preview, distance) {
+        if (!this._settings.timeline_preview_scale_with_distance) {
+            return preview.scale;
+        }
+        return preview.scale * Math.pow(this._settings.preview_scaling_factor, distance);
     }
 };

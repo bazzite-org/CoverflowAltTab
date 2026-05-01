@@ -290,6 +290,9 @@ export default class CoverflowAltTabPreferences extends ExtensionPreferences {
         window_size_page.add(windows_pref_group);
         window_size_pref_group.add(buildRangeAdw(settings, "preview-to-monitor-ratio", [0, 1, 0.001, [0.250, 0.500, 0.750]], _("Window Preview Size to Monitor Size Ratio"), _("Maximum ratio of window preview size to monitor size."), true));
         window_size_pref_group.add(buildRangeAdw(settings, "preview-scaling-factor", [0, 1, 0.001, [0.250, 0.500, 0.800]], _("Off-center Size Factor"), _("Factor by which to successively shrink previews off to the side."), true));
+        window_size_pref_group.add(buildRangeAdw(settings, "timeline-preview-distance", [0, 1024, 1, [64, 128, 256, 512, 768, 1024]], _("Timeline Preview Distance"), _("Distance in pixels between timeline previews."), true));
+        window_size_pref_group.add(buildRangeAdw(settings, "timeline-preview-angle", [0, 90, 0.01, [15.95, 23.20, 29.36, 32.01, 33.69, 36.87, 38.66, 45.00]], _("Timeline Preview Angle"), _("Angle in degrees (0-90) for timeline preview spacing. Common monitor aspect ratios are detents."), true));
+        window_size_pref_group.add(buildSwitcherAdw(settings, "timeline-preview-scale-with-distance", [], [], _("Timeline Scale Uses Distance"), _("Scale timeline previews by Off-center Size Factor raised to their distance from the selected preview.")));
         window_size_pref_group.add(buildRangeAdw(settings, "coverflow-window-angle", [0, 360, 0.5, [0, 90, 180, 270]], _("Coverflow Window Angle"), _("Angle of off-center windows in coverflow mode."), true));
         window_size_pref_group.add(buildRangeAdw(settings, "coverflow-window-offset-width", [0, 1000, 1, [0, 50,]], _("Coverflow Window Offset Width"), _("How far windows are off to the side in coverflow mode."), true));
         let background_application_page = new Adw.PreferencesPage({
