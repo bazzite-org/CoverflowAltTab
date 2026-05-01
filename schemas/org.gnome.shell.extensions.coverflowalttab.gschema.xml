@@ -157,6 +157,12 @@
         <summary>In Timeline switcher, spacing angle between previews</summary>
         <description>Angle in degrees used with timeline preview distance to compute horizontal and vertical spacing.</description>
     </key>
+    <key type="d" name="timeline-preview-tilt-angle">
+        <range min="0" max="90"/>
+        <default>15</default>
+        <summary>In Timeline switcher, Y-axis tilt of previews</summary>
+        <description>Rotation angle in degrees applied to timeline previews around the Y axis.</description>
+    </key>
     <key type="b" name="timeline-preview-scale-with-distance">
         <default>true</default>
         <summary>In Timeline switcher, scale previews by distance</summary>

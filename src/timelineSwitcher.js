@@ -25,7 +25,6 @@ import {Preview, Placement} from './preview.js'
 
 let TRANSITION_TYPE;
 let IN_BOUNDS_TRANSITION_TYPE;
-const TILT_ANGLE = 15;
 const ALPHA = 1.0;
 const DEGREES_TO_RADIANS = Math.PI / 180;
 let PREVIEW_OFFSET_X;
@@ -132,7 +131,7 @@ export class TimelineSwitcher extends Switcher {
                 scale_z: preview.scale,
                 time: animation_time / 2,
                 transition: TRANSITION_TYPE,
-                rotation_angle_y: TILT_ANGLE,
+                rotation_angle_y: this._settings.timeline_preview_tilt_angle,
             });
             this._manager.platform.tween(preview, {
                 opacity: ALPHA * 255,
@@ -166,7 +165,7 @@ export class TimelineSwitcher extends Switcher {
                     y: preview.target_y + PREVIEW_OFFSET_Y,
                     time: animation_time / 2,
                     transition: TRANSITION_TYPE,
-                    rotation_angle_y: TILT_ANGLE,
+                    rotation_angle_y: this._settings.timeline_preview_tilt_angle,
                     onCompleteParams: [preview, distance, animation_time],
                     onComplete: this._onFadeForwardComplete,
                     onCompleteScope: this,
@@ -183,13 +182,15 @@ export class TimelineSwitcher extends Switcher {
                 preview.__looping = true;
                 animation_time = this._settings.animation_time;
                 let scale = this._getScaleAtDistance(preview, this._previews.length);
+                const left_offset = this._settings.timeline_preview_scale_with_distance ? Math.sqrt(this._previews.length) : this._previews.length;
+
                 preview.make_bottom_layer(this.previewActor);
                 this._manager.platform.tween(preview, {
                     time: animation_time / 2,
-                    x: preview.target_x - Math.sqrt(this._previews.length) * PREVIEW_OFFSET_X,
-                    y: preview.target_y - Math.sqrt(this._previews.length) * PREVIEW_OFFSET_Y,
+                    x: preview.target_x - left_offset * PREVIEW_OFFSET_X,
+                    y: preview.target_y - left_offset * PREVIEW_OFFSET_Y,
                     transition: TRANSITION_TYPE,
-                    rotation_angle_y: TILT_ANGLE,
+                    rotation_angle_y: this._settings.timeline_preview_tilt_angle,
                     onCompleteParams: [preview, distance, animation_time],
                     onComplete: this._onFadeBackwardsComplete,
                     onCompleteScope: this,
@@ -210,7 +211,7 @@ export class TimelineSwitcher extends Switcher {
                     scale_y: scale,
                     scale_z: scale,
                     time: this.gestureInProgress ? 0 : animation_time,
-                    rotation_angle_y: TILT_ANGLE,
+                    rotation_angle_y: this._settings.timeline_preview_tilt_angle,
                     transition: TRANSITION_TYPE,
                     onComplete: () => { preview.set_reactive(true); },
 
@@ -262,16 +263,18 @@ export class TimelineSwitcher extends Switcher {
     _onFadeForwardComplete(preview, distance, animation_time) {
         preview.__looping = false;
         preview.make_bottom_layer(this.previewActor);
+        const start_offset = this._settings.timeline_preview_scale_with_distance ? Math.sqrt(distance + 1) : distance + 1;
+        const end_offset = this._settings.timeline_preview_scale_with_distance ? Math.sqrt(distance) : distance;
 
-        preview.x = preview.target_x - Math.sqrt(distance + 1) * PREVIEW_OFFSET_X;
-        preview.y = preview.target_y - Math.sqrt(distance + 1) * PREVIEW_OFFSET_Y;
+        preview.x = preview.target_x - start_offset * PREVIEW_OFFSET_X;
+        preview.y = preview.target_y - start_offset * PREVIEW_OFFSET_Y;
         let scale_start = this._getScaleAtDistance(preview, distance + 1);
         preview.scale_x = scale_start;
         preview.scale_y = scale_start;
         preview.scale_z = scale_start;
         this._manager.platform.tween(preview, {
-            x: preview.target_x - Math.sqrt(distance) * PREVIEW_OFFSET_X,
-            y: preview.target_y - Math.sqrt(distance) * PREVIEW_OFFSET_Y,
+            x: preview.target_x - end_offset * PREVIEW_OFFSET_X,
+            y: preview.target_y - end_offset * PREVIEW_OFFSET_Y,
             time: animation_time / 2,
             transition: TRANSITION_TYPE,
             onCompleteParams: [preview],
