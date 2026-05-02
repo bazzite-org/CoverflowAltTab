@@ -266,6 +266,7 @@ export const Preview = GObject.registerClass({
                 this.bind_property('scale_z', this._highlight, 'scale_z',
                     GObject.BindingFlags.SYNC_CREATE);
                 this.switcher.previewActor.add_child(this._highlight);
+                this.switcher.previewActor.set_child_above_sibling(this._highlight, this);
             }
             if (this._flash === null) {
                 this._flash = new St.Bin({
@@ -292,9 +293,8 @@ export const Preview = GObject.registerClass({
                 this.bind_property('scale_z', this._flash, 'scale_z',
                     GObject.BindingFlags.SYNC_CREATE);
                 this.switcher.previewActor.add_child(this._flash);
+                this.switcher.previewActor.set_child_above_sibling(this._flash, this._highlight);
                 if (this._application_icon_box !== null) {
-                    this.switcher.previewActor.set_child_above_sibling(this._application_icon_box,
-                        this._highlight);
                     this.switcher.previewActor.set_child_above_sibling(this._application_icon_box,
                         this._flash);
                 }

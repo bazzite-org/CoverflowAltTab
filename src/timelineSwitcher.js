@@ -293,7 +293,6 @@ export class TimelineSwitcher extends Switcher {
     }
 
     _onFinishMove(preview) {
-        this._updatePreviews(true)
 
         if (preview.__finalTween) {
             for (let tween of preview.__finalTween) {
