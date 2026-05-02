@@ -163,10 +163,16 @@
         <summary>In Timeline switcher, Y-axis tilt of previews</summary>
         <description>Rotation angle in degrees applied to timeline previews around the Y axis.</description>
     </key>
+    <key type="d" name="timeline-preview-scaling-factor">
+        <range min="0" max="1"/>
+        <default>0.8</default>
+        <summary>In Timeline switcher, scales previews by distance from the selected preview</summary>
+        <description>Scale factor successively applied to timeline previews each step away from the selected preview.</description>
+    </key>
     <key type="b" name="timeline-preview-scale-with-distance">
         <default>true</default>
         <summary>In Timeline switcher, scale previews by distance</summary>
-        <description>Scale timeline previews by preview scaling factor raised to the distance from the selected preview.</description>
+        <description>Scale timeline previews by timeline preview scaling factor raised to the distance from the selected preview.</description>
     </key>
     <key type="d" name="coverflow-window-angle">
         <range min="0" max="360"/>

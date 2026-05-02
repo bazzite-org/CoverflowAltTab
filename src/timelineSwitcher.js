@@ -307,6 +307,6 @@ export class TimelineSwitcher extends Switcher {
         if (!this._settings.timeline_preview_scale_with_distance) {
             return preview.scale;
         }
-        return preview.scale * Math.pow(this._settings.preview_scaling_factor, distance);
+        return preview.scale * Math.pow(this._settings.timeline_preview_scaling_factor, distance);
     }
 };

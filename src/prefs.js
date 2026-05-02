@@ -286,16 +286,26 @@ export default class CoverflowAltTabPreferences extends ExtensionPreferences {
         let window_size_pref_group = new Adw.PreferencesGroup({
             title: _("Properties")
         });
+        let timeline_window_pref_group = new Adw.PreferencesGroup({
+            title: _("Timeline Settings")
+        });
+        let coverflow_window_pref_group = new Adw.PreferencesGroup({
+            title: _("Coverflow Settings")
+        });
         window_size_page.add(window_size_pref_group);
+        window_size_page.add(timeline_window_pref_group);
+        window_size_page.add(coverflow_window_pref_group);
         window_size_page.add(windows_pref_group);
         window_size_pref_group.add(buildRangeAdw(settings, "preview-to-monitor-ratio", [0, 1, 0.001, [0.250, 0.500, 0.750]], _("Window Preview Size to Monitor Size Ratio"), _("Maximum ratio of window preview size to monitor size."), true));
-        window_size_pref_group.add(buildRangeAdw(settings, "preview-scaling-factor", [0, 1, 0.001, [0.250, 0.500, 0.800]], _("Off-center Size Factor"), _("Factor by which to successively shrink previews off to the side."), true));
-        window_size_pref_group.add(buildRangeAdw(settings, "timeline-preview-distance", [0, 1024, 1, [64, 128, 256, 512, 768, 1024]], _("Timeline Preview Distance"), _("Distance in pixels between timeline previews."), true));
-        window_size_pref_group.add(buildRangeAdw(settings, "timeline-preview-angle", [0, 90, 0.01, [15.95, 23.20, 29.36, 32.01, 33.69, 36.87, 38.66, 45.00]], _("Timeline Preview Angle"), _("Angle in degrees (0-90) for timeline preview spacing. Common monitor aspect ratios are detents."), true));
-        window_size_pref_group.add(buildRangeAdw(settings, "timeline-preview-tilt-angle", [0, 90, 0.5, [0, 15, 30, 45, 60, 75, 90]], _("Timeline Preview Tilt Angle"), _("Y-axis rotation angle in degrees applied to timeline previews."), true));
-        window_size_pref_group.add(buildSwitcherAdw(settings, "timeline-preview-scale-with-distance", [], [], _("Timeline Scale Uses Distance"), _("Scale timeline previews by Off-center Size Factor raised to their distance from the selected preview.")));
-        window_size_pref_group.add(buildRangeAdw(settings, "coverflow-window-angle", [0, 360, 0.5, [0, 90, 180, 270]], _("Coverflow Window Angle"), _("Angle of off-center windows in coverflow mode."), true));
-        window_size_pref_group.add(buildRangeAdw(settings, "coverflow-window-offset-width", [0, 1000, 1, [0, 50,]], _("Coverflow Window Offset Width"), _("How far windows are off to the side in coverflow mode."), true));
+        timeline_window_pref_group.add(buildRangeAdw(settings, "timeline-preview-distance", [0, 1024, 1, [64, 128, 256, 512, 768, 1024]], _("Timeline Preview Layout Distance"), _("Distance in pixels between timeline previews."), true));
+        timeline_window_pref_group.add(buildRangeAdw(settings, "timeline-preview-angle", [0, 90, 0.01, [15.95, 23.20, 29.36, 32.01, 33.69, 36.87, 38.66, 45.00]], _("Timeline Preview Layout Angle"), _("Angle in degrees (0-90) for timeline preview layout such that previews go from lower left to upper right at this angle, with the current preview upper left corner at the center of the monitor. Common monitor aspect ratios are detents."), true));
+        timeline_window_pref_group.add(buildRangeAdw(settings, "timeline-preview-tilt-angle", [0, 90, 0.5, [0, 15, 30, 45, 60, 75, 90]], _("Timeline Preview Tilt Angle"), _("Y-axis rotation angle in degrees applied to timeline previews."), true));
+        const scaling_factor_row = buildRangeAdw(settings, "timeline-preview-scaling-factor", [0, 1, 0.001, [0.250, 0.500, 0.800]], _("Timeline Preview Scaling Factor"), _("Factor by which timeline previews successively shrink with distance from the selected preview."), true);
+        timeline_window_pref_group.add(buildSwitcherAdw(settings, "timeline-preview-scale-with-distance", [scaling_factor_row], [], _("Timeline Scale Uses Distance"), _("Scale timeline previews by Timeline Preview Scaling Factor raised to their distance from the selected preview.")));
+        timeline_window_pref_group.add(scaling_factor_row);
+        coverflow_window_pref_group.add(buildRangeAdw(settings, "preview-scaling-factor", [0, 1, 0.001, [0.250, 0.500, 0.800]], _("Coverflow Off-center Size Factor"), _("Factor by which coverflow previews successively shrink off to the side."), true));
+        coverflow_window_pref_group.add(buildRangeAdw(settings, "coverflow-window-angle", [0, 360, 0.5, [0, 90, 180, 270]], _("Coverflow Window Angle"), _("Angle of off-center windows in coverflow mode."), true));
+        coverflow_window_pref_group.add(buildRangeAdw(settings, "coverflow-window-offset-width", [0, 1000, 1, [0, 50,]], _("Coverflow Window Offset Width"), _("How far windows are off to the side in coverflow mode."), true));
         let background_application_page = new Adw.PreferencesPage({
             title: _("AppSwitcher"),
             icon_name: "appswitcher-symbolic"
